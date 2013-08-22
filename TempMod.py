@@ -18,10 +18,10 @@ def readRawData():
   return lines
     
 def getTemp():
-  lines = read_temp_raw()
+  lines = readRawData()
   while lines[0].strip()[-3:] != 'YES':
     time.sleep(0.2)
-    lines = read_temp_raw()
+    lines = readRawData()
   equals_pos = lines[1].find('t=')
   if equals_pos != -1:
     tempString = lines[1][equals_pos+2:]
