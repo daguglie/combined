@@ -6,12 +6,7 @@ import time
 from Adafruit_CharLCDPlate import Adafruit_CharLCDPlate
 import TempMod
 
-#def message1():
-#  return "first"
-def message2():
-  return "second"
-def message3():
-  return "last"
+
 
 lcd = Adafruit_CharLCDPlate(busnum=1)
 choosenScreen = 3
@@ -20,6 +15,25 @@ lastRefresh = time.time()
 lcd.clear()
 lcd.message("Raspberry Pi\nOven Mitt!")
 time.sleep(2)
+
+configArray = [1,1,1]
+
+
+def TempConfig():
+  selection = configArray[0]
+  if selection == 0:
+    selection = 2
+  selection = selection % 2
+  values = TempMod.getTemp()
+  if selection == 1:
+    return values[0] + " C"
+  elif selection == 0:
+    return values[1] + " F"
+    
+def message2():
+  return "second"
+def message3():
+  return "last"
 
 while True:
   if (time.time() - lastButtonPress) > 0.5: #trying to debounce the buttons 
@@ -33,9 +47,9 @@ while True:
       lastButtonPress = time.time()
     choosenScreen = choosenScreen % 3
     
-  if (time.time() - lastRefresh) > 3: #stop screen flickers
+  if (time.time() - lastRefresh) > 2: #stop screen flickers
     if (choosenScreen == 0):
-      displayMessage = TempMod.getTemp() #Temperature Module
+      displayMessage = TempConfig() #Temperature Module
       #displayMessage = message1()
       #lcd.clear()
     elif (choosenScreen == 1):
