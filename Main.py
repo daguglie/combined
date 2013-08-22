@@ -26,9 +26,9 @@ def TempConfig():
   selection = selection % 2
   values = TempMod.getTemp()
   if selection == 1:
-    return values[0] + " C"
+    return str(values[0]) + " C"
   elif selection == 0:
-    return values[1] + " F"
+    return str(values[1]) + " F"
     
 def message2():
   return "second"
