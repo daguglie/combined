@@ -45,7 +45,13 @@ while True:
     elif lcd.buttonPressed(lcd.LEFT):
       choosenScreen-=1
       lastButtonPress = time.time()
+      
     choosenScreen = choosenScreen % 3
+    
+    if lcd.buttonPressed(lcd.UP):
+      selection[choosenScreen] += 1
+    elif lcd.buttonPressed(lcd.DOWN):
+      selection[choosenScreen] -= 1
     
   if (time.time() - lastRefresh) > 2: #stop screen flickers
     if (choosenScreen == 0):
