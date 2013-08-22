@@ -22,7 +22,7 @@ while True:
     choosenScreen = 3 #avoid modulus of 0 problems
   if lcd.buttonPressed(lcd.RIGHT):
     choosenScreen+=1
-  elif lcd.buttonPressed(lcd.RIGHT):
+  elif lcd.buttonPressed(lcd.LEFT):
     choosenScreen-=1
   choosenScreen = choosenScreen % 3
   if (choosenScreen == 0):
