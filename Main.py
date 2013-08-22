@@ -13,6 +13,7 @@ from Adafruit_CharLCDPlate import Adafruit_CharLCDPlate
 lcd = Adafruit_CharLCDPlate(busnum=1)
 choosenScreen = 3
 lastButtonPress = time.time()
+lastRefresh = time.time()
 lcd.clear()
 lcd.message("Raspberry Pi\nOven Mitt!")
 time.sleep(2)
@@ -28,14 +29,16 @@ while True:
       choosenScreen-=1
       lastButtonPress = time.time()
     choosenScreen = choosenScreen % 3
-    if (choosenScreen == 0):
-      displayMessage = message1()
-      #lcd.clear()
-    elif (choosenScreen == 1):
-      displayMessage = message2()
-      #lcd.clear()
-    elif (choosenScreen == 2):
-      displayMessage = message3()
-      #lcd.clear()
-    lcd.message(displayMessage)
+    if (time.time() - lastRefresh) > 2:
+      if (choosenScreen == 0):
+        displayMessage = message1()
+        #lcd.clear()
+      elif (choosenScreen == 1):
+        displayMessage = message2()
+        #lcd.clear()
+      elif (choosenScreen == 2):
+        displayMessage = message3()
+        #lcd.clear()
+      lcd.clear()
+      lcd.message(displayMessage)
     
