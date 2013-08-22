@@ -1,14 +1,17 @@
 #LCD Only
 
-def message1():
-  return "first"
+
+
+import time
+from Adafruit_CharLCDPlate import Adafruit_CharLCDPlate
+import TempMod
+
+#def message1():
+#  return "first"
 def message2():
   return "second"
 def message3():
   return "last"
-
-import time
-from Adafruit_CharLCDPlate import Adafruit_CharLCDPlate
 
 lcd = Adafruit_CharLCDPlate(busnum=1)
 choosenScreen = 3
@@ -21,7 +24,7 @@ time.sleep(2)
 while True:
   if (time.time() - lastButtonPress) > 0.5: #trying to debounce the buttons 
     if choosenScreen == 0:
-      choosenScreen = 3 #avoid modulus of 0 problems
+      choosenScreen = 3 #avoid modulus of 0 or negative problems
     if lcd.buttonPressed(lcd.RIGHT):
       choosenScreen+=1
       lastButtonPress = time.time()
@@ -30,9 +33,10 @@ while True:
       lastButtonPress = time.time()
     choosenScreen = choosenScreen % 3
     
-  if (time.time() - lastRefresh) > 2:
+  if (time.time() - lastRefresh) > 3: #stop screen flickers
     if (choosenScreen == 0):
-      displayMessage = message1()
+      displayMessage = TempMod.getTemp() #Temperature Module
+      #displayMessage = message1()
       #lcd.clear()
     elif (choosenScreen == 1):
       displayMessage = message2()
