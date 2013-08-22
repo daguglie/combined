@@ -18,18 +18,18 @@ lcd.message("Raspberry Pi\nOven Mitt!")
 sleep(2)
 
 while True:
-  if choosenScreen == 0
+  if choosenScreen == 0:
     choosenScreen = 3 #avoid modulus of 0 problems
-  if lcd.buttonPressed(lcd.RIGHT)
+  if lcd.buttonPressed(lcd.RIGHT):
     choosenScreen++
-  else if lcd.buttonPressed(lcd.RIGHT)
+  else if lcd.buttonPressed(lcd.RIGHT):
     choosenScreen--
   choosenScreen = choosenScreen % 3
-  if (choosenScreen == 0)
+  if (choosenScreen == 0):
     displayMessage = message1()
-  else if (choosenScreen == 1)
+  else if (choosenScreen == 1):
     displayMessage = message2()
-  else if (choosenScreen == 2)
+  else if (choosenScreen == 2):
     displayMessage = message3()
   lcd.clear()
   lcd.message(displayMessage)
