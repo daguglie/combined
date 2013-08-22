@@ -21,9 +21,9 @@ while True:
   if choosenScreen == 0:
     choosenScreen = 3 #avoid modulus of 0 problems
   if lcd.buttonPressed(lcd.RIGHT):
-    choosenScreen++
+    choosenScreen+=1
   else if lcd.buttonPressed(lcd.RIGHT):
-    choosenScreen--
+    choosenScreen-=1
   choosenScreen = choosenScreen % 3
   if (choosenScreen == 0):
     displayMessage = message1()
