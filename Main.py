@@ -22,14 +22,14 @@ while True:
     choosenScreen = 3 #avoid modulus of 0 problems
   if lcd.buttonPressed(lcd.RIGHT):
     choosenScreen+=1
-  else if lcd.buttonPressed(lcd.RIGHT):
+  elif lcd.buttonPressed(lcd.RIGHT):
     choosenScreen-=1
   choosenScreen = choosenScreen % 3
   if (choosenScreen == 0):
     displayMessage = message1()
-  else if (choosenScreen == 1):
+  elif (choosenScreen == 1):
     displayMessage = message2()
-  else if (choosenScreen == 2):
+  elif (choosenScreen == 2):
     displayMessage = message3()
   lcd.clear()
   lcd.message(displayMessage)
