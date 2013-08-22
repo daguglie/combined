@@ -1,10 +1,10 @@
 #LCD Only
 
-def message1()
+def message1():
   return "first"
-def message2()
+def message2():
   return "second"
-def message3()
+def message3():
   return "last"
 
 from time import sleep
