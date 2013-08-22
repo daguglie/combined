@@ -28,3 +28,5 @@ def getTemp():
       tempC = float(tempString)/1000.0
       tempF = tempC * 9.0 / 5.0 + 32.0
       return tempC, tempF
+    else:
+      return "Unknown error"
