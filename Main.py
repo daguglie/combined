@@ -27,9 +27,11 @@ while True:
   choosenScreen = choosenScreen % 3
   if (choosenScreen == 0):
     displayMessage = message1()
+    lcd.clear()
   elif (choosenScreen == 1):
     displayMessage = message2()
+    lcd.clear()
   elif (choosenScreen == 2):
     displayMessage = message3()
-  lcd.clear()
+    lcd.clear()
   lcd.message(displayMessage)
