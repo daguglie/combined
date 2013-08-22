@@ -7,7 +7,7 @@ def message2():
 def message3():
   return "last"
 
-from time import sleep
+from time
 from Adafruit_CharLCDPlate import Adafruit_CharLCDPlate
 
 lcd = Adafruit_CharLCDPlate(busnum=1)
