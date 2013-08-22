@@ -23,8 +23,10 @@ while True:
       choosenScreen = 3 #avoid modulus of 0 problems
     if lcd.buttonPressed(lcd.RIGHT):
       choosenScreen+=1
+      lastButtonPress = time.time()
     elif lcd.buttonPressed(lcd.LEFT):
       choosenScreen-=1
+      lastButtonPress = time.time()
     choosenScreen = choosenScreen % 3
     if (choosenScreen == 0):
       displayMessage = message1()
@@ -36,4 +38,4 @@ while True:
       displayMessage = message3()
       lcd.clear()
     lcd.message(displayMessage)
-    lastButtonPress = time.time()
+    
