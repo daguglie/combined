@@ -15,7 +15,7 @@ choosenScreen = 3
 lastButtonPress = time.time()
 lcd.clear()
 lcd.message("Raspberry Pi\nOven Mitt!")
-sleep(2)
+time.sleep(2)
 
 while True:
   if (time.time() - lastButtonPress) > 2: #trying to debounce the buttons 
