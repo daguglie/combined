@@ -3,7 +3,7 @@
 import time
 from Adafruit_CharLCDPlate import Adafruit_CharLCDPlate
 import TempMod
-
+import datetime
 
 
 lcd = Adafruit_CharLCDPlate(busnum=1)
