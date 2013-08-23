@@ -63,8 +63,8 @@ def TimerConfig():
   if timerRun == True:
     timerStop = datetime.datetime.now()
   retVal = timerStop - timerStart
-  retStr = str(retStr)[:-3]
-  return retStr
+  retStr = str(retStr)
+  return retStr[:-3]
   
 def message3():
   return "last"
