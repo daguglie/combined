@@ -57,7 +57,7 @@ def TimerConfig():
     timerStart = datetime.datetime.now()
     timerStop = datetime.datetime.now()
     timerRun = False
-  if timerRun == true:
+  if timerRun == True:
     timerStop = datetime.datetime.now()
   retStr = timerStop - timerStart
   return retStr.strftime('%H:%M:%S')
