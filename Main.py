@@ -50,6 +50,7 @@ def TimeConfig():
 def TimerConfig():
   #Problem with writing to this variable because it is in it's own def so declared as global
   global timerRun, timerStart, timerStop  
+  retStr = ""
   if lcd.buttonPressed(lcd.UP) and timerRun == False:
     timerStart = datetime.datetime.now()
     timerRun = True
