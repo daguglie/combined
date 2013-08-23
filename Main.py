@@ -51,13 +51,16 @@ def TimerConfig():
   if lcd.buttonPressed(lcd.UP) and timerRun == False:
     timerStart = datetime.datetime.now()
     timerRun = True
+    time.sleep(0.05)
   elif lcd.buttonPressed(lcd.DOWN):
     timerRun = False
+    time.sleep(0.05)
   elif lcd.buttonPressed(lcd.SELECT):
     timerStart = datetime.datetime.now()
     timerStop = datetime.datetime.now()
     timerRun = False
-  elif timerRun == True: #sketch race condition so put in elif?
+    time.sleep(0.05)
+  if timerRun == True: #sketch race condition so put in elif?
     timerStop = datetime.datetime.now()
   retStr = timerStop - timerStart
   return retStr.strftime('%H:%M:%S')
