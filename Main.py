@@ -1,7 +1,5 @@
 #LCD Only
 
-
-
 import time
 from Adafruit_CharLCDPlate import Adafruit_CharLCDPlate
 import TempMod
@@ -20,8 +18,8 @@ configArray = [1,1,1]
 
 
 def TempConfig():
-  selection = configArray[0]
-  if selection == 0:
+  selection = configArray[0] 
+  if selection == 0: #avoid modulus of 0 or negative problems
     selection = 2
   selection = selection % 2
   values = TempMod.getTemp()
@@ -29,6 +27,15 @@ def TempConfig():
     return str(values[0]) + " C"
   elif selection == 0:
     return str(values[1]) + " F"
+
+def TimeConfig():
+  selection = configArray[1] 
+  if selection == 0: #avoid modulus of 0 or negative problems
+    selection = 2
+  selection = selection % 2
+  if selection == 1:
+    now = datetime.datetime.now()
+    return now.strftime('%a, %b %d')
     
 def message2():
   return "second"
