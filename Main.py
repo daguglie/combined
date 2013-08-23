@@ -57,7 +57,7 @@ def TimerConfig():
     timerStart = datetime.datetime.now()
     timerStop = datetime.datetime.now()
     timerRun = False
-  if timerRun == True:
+  elif timerRun == True: #sketch race condition so put in elif?
     timerStop = datetime.datetime.now()
   retStr = timerStop - timerStart
   return retStr.strftime('%H:%M:%S')
