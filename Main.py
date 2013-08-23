@@ -49,8 +49,7 @@ def TimeConfig():
     
 def TimerConfig():
   #Problem with writing to this variable because it is in it's own def so declared as global
-  global timerRun, timerStart, timerStop  
-  retStr = ""
+  global timerRun, timerStart, timerStop
   if lcd.buttonPressed(lcd.UP) and timerRun == False:
     timerStart = datetime.datetime.now()
     timerRun = True
@@ -63,8 +62,7 @@ def TimerConfig():
   if timerRun == True:
     timerStop = datetime.datetime.now()
   retVal = timerStop - timerStart
-  retStr = str(retStr)
-  return retStr
+  return str(retVal)[:-3]
   
 def message3():
   return "last"
