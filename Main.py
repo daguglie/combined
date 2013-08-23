@@ -7,9 +7,14 @@ import datetime
 
 
 lcd = Adafruit_CharLCDPlate(busnum=1)
+numScreens = 4
 choosenScreen = 3
 lastButtonPress = time.time()
 lastRefresh = time.time()
+timerRun = False
+timerStart = datetime.datetime.now()
+timerStop = datetime.datetime.now()
+
 lcd.clear()
 lcd.message("Raspberry Pi\nOven Mitt!")
 time.sleep(2)
@@ -42,14 +47,28 @@ def TimeConfig():
     retStr = now.strftime('%a, %b %d') +"\n"+now.strftime('%H:%M:%S')
   return retStr
     
-
+def TimerConfig():
+  if lcd.buttonPressed(lcd.UP) && timerRun == False:
+    timerStart = datetime.datetime.now()
+    timerRun = True
+  elif lcd.buttonPressed(lcd.DOWN):
+    timerRun = False
+  elif lcd.buttonPressed(lcd.SELECT):
+    timerStart = datetime.datetime.now()
+    timerStop = datetime.datetime.now()
+    timerRun = False
+  if timerRun == true:
+    timerStop = datetime.datetime.now()
+  retStr = timerStop - timerStart
+  return retStr.strftime('%H:%M:%S')
+  
 def message3():
   return "last"
 
 while True:
   if (time.time() - lastButtonPress) > 0.5: #trying to debounce the buttons 
     if choosenScreen == 0:
-      choosenScreen = 3 #avoid modulus of 0 or negative problems
+      choosenScreen = numScreens #avoid modulus of 0 or negative problems
     if lcd.buttonPressed(lcd.RIGHT):
       choosenScreen+=1
       lastButtonPress = time.time()
@@ -57,7 +76,7 @@ while True:
       choosenScreen-=1
       lastButtonPress = time.time()
       
-    choosenScreen = choosenScreen % 3
+    choosenScreen = choosenScreen % numScreens
     
     if lcd.buttonPressed(lcd.UP):
       configArray[choosenScreen] += 1
@@ -73,8 +92,10 @@ while True:
       displayMessage = TimeConfig()
       #lcd.clear()
     elif (choosenScreen == 2):
-      displayMessage = message3()
+      displayMessage = TimerConfig()
       #lcd.clear()
+    elif (choosenScreen == 3):
+      displayMessage = message3()
     lcd.clear()
     lcd.message(displayMessage)
     
