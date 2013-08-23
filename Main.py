@@ -30,6 +30,7 @@ def TempConfig():
 
 def TimeConfig():
   selection = configArray[1] 
+  retStr = ""
   if selection == 0: #avoid modulus of 0 or negative problems
     selection = 2
   selection = selection % 2
@@ -39,10 +40,9 @@ def TimeConfig():
   elif selection == 0:
     now = datetime.datetime.now()
     retStr = now.strftime('%a, %b %d') +"\n"+now.strftime('%H:%M')
-    return now.strftime('%a, %b %d')
+  return retStr
     
-def message2():
-  return "second"
+
 def message3():
   return "last"
 
@@ -70,7 +70,7 @@ while True:
       #displayMessage = message1()
       #lcd.clear()
     elif (choosenScreen == 1):
-      displayMessage = message2()
+      displayMessage = TimeConfig()
       #lcd.clear()
     elif (choosenScreen == 2):
       displayMessage = message3()
