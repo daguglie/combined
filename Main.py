@@ -36,10 +36,10 @@ def TimeConfig():
   selection = selection % 2
   if selection == 1:
     now = datetime.datetime.now()
-    retStr = now.strftime('%a, %b %d') +"\n"+now.strftime('%I:%M %p')
+    retStr = now.strftime('%a, %b %d') +"\n"+now.strftime('%I:%M:%S %p')
   elif selection == 0:
     now = datetime.datetime.now()
-    retStr = now.strftime('%a, %b %d') +"\n"+now.strftime('%H:%M')
+    retStr = now.strftime('%a, %b %d') +"\n"+now.strftime('%H:%M:%S')
   return retStr
     
 
