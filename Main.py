@@ -48,7 +48,7 @@ def TimeConfig():
   return retStr
     
 def TimerConfig():
-  if lcd.buttonPressed(lcd.UP) && timerRun == False:
+  if lcd.buttonPressed(lcd.UP) and timerRun == False:
     timerStart = datetime.datetime.now()
     timerRun = True
   elif lcd.buttonPressed(lcd.DOWN):
