@@ -57,12 +57,12 @@ def TimerConfig():
     timerRun = False
   elif lcd.buttonPressed(lcd.SELECT):
     timerStart = datetime.datetime.now()
-    timerStop = datetime.datetime.now()
+    timerStop = timerStart
     timerRun = False
   if timerRun == True:
     timerStop = datetime.datetime.now()
   retVal = timerStop - timerStart
-  return str(retVal)[:-3]
+  return str(retVal)
   
 def message3():
   return "last"
