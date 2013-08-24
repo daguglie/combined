@@ -7,7 +7,7 @@ import datetime
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
-heartBeatPin = 23
+heartBeatPin = 24
 GPIO.setup(heartBeatPin, GPIO.IN)
 
 lcd = Adafruit_CharLCDPlate(busnum=1)
@@ -72,10 +72,10 @@ def TimerConfig():
 def HeartBeatConfig():
   global lcd
   retMsg = ""
-  if (GPIO.input(heartBeatPin)):
+  if (GPIO.input(heartBeatPin) == True):
     lcd.backlight(lcd.RED)
     retMsg = "beat"
-  else:
+  elif (GPIO.input(heartBeatPin) == False);
     lcd.backlight(lcd.BLUE)
     retMsg = "no beat"
   return retMsg
