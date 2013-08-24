@@ -7,7 +7,7 @@ import datetime
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
-heartBeatPin = 24
+heartBeatPin = 23
 GPIO.setup(heartBeatPin, GPIO.IN)
 
 lcd = Adafruit_CharLCDPlate(busnum=1)
