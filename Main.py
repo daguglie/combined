@@ -75,7 +75,7 @@ def HeartBeatConfig():
   if (GPIO.input(heartBeatPin) == True):
     lcd.backlight(lcd.RED)
     retMsg = "beat"
-  elif (GPIO.input(heartBeatPin) == False);
+  elif (GPIO.input(heartBeatPin) == False):
     lcd.backlight(lcd.BLUE)
     retMsg = "no beat"
   return retMsg
