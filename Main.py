@@ -95,12 +95,13 @@ def HeartBeatConfig():
   
 def beat(channel):
   currentTime = datetime.datetime.now()
-  if (count == 11):
+  if (beatCount == 11):
     beatTotalTime = neatTotalTime - prevTime + (currentTime - prevTime)
     prevTime = currentTime
     lcd.backlight(lcd.RED)
     lcd.backlight(lcd.TEAL)
-  elif(count > 0 and count < 11):
+  elif(beatCount > 0 and beatCount < 11):
+    beatCount +=1
     beatTotalTime += (currentTime - prevTime)
     lcd.backlight(lcd.RED)
     lcd.backlight(lcd.TEAL)
