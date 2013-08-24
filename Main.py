@@ -73,7 +73,7 @@ def TimerConfig():
 def HeartBeatConfig():
   global lcd
   retMsg = ""
-  if (GPIO.input(heartBeatPin):
+  if (GPIO.input(heartBeatPin)):
     lcd.backlight(lcd.RED)
     retMsg = "beat"
   else
