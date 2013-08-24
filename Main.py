@@ -112,7 +112,8 @@ def beat(channel):
 def message3():
   return "last"
 
-GPIO.add_event_detect(23, GPIO.FALLING, callback=beat)
+GPIO.add_event_detect(23, GPIO.FALLING)
+GPIO.add_event_callback(23, beat)
 
 while True:
   if (time.time() - lastButtonPress) > 0.5: #trying to debounce the buttons 
