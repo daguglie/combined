@@ -105,12 +105,12 @@ def beat(channel):
     beatCount +=1
     beatTotalTime += (currentTime - prevTime)
     lcd.backlight(lcd.RED)
-    lcd.message(displayMessage)
+    lcd.message(beatCount)
     lcd.backlight(lcd.TEAL)
   else:
     prevTime = currentTime
     lcd.backlight(lcd.RED)
-    lcd.message(displayMessage)
+    print(prevTime)
     lcd.backlight(lcd.TEAL)
 
 def message3():
