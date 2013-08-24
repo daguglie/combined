@@ -23,9 +23,9 @@ lcd.backlight(lcd.TEAL)
 lcd.message("Raspberry Pi\nOven Mitt!")
 time.sleep(2)
 
-beatTotalTime = 0
 beatCount = 0
 prevBeat = datetime.datetime.now()
+beatTotalTime = prevBeat-prevBeat #Setting total time to 0
 
 configArray = [1,1,1]
 
