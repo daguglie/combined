@@ -4,7 +4,12 @@ import time
 from Adafruit_CharLCDPlate import Adafruit_CharLCDPlate
 import TempMod
 import datetime
+import RPi.GPIO as GPIO
 
+GPIO.cleanup()
+GPIO.setmode(GPIO.BCM)
+heartBeatPin = 23
+GPIO.setup(heartBeatPin, GPIO.IN)
 
 lcd = Adafruit_CharLCDPlate(busnum=1)
 numScreens = 4
@@ -64,6 +69,17 @@ def TimerConfig():
     timerStop = datetime.datetime.now()
   retVal = timerStop - timerStart
   return str(retVal)
+  
+def HeartBeatConfig():
+  global lcd
+  retMsg = ""
+  if (GPIO.input(heartBeatPin):
+    lcd.backlight(lcd.RED)
+    retMsg = "beat"
+  else
+    lcd.backlight(lcd.BLUE)
+    retMsg = "no beat"
+  return retMsg
   
 def message3():
   return "last"
