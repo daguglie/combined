@@ -102,4 +102,4 @@ while True:
   if(displayMessage != prevDispMessage):
     lcd.clear()
     lcd.message(displayMessage)
-    
+    prevDispMessage = displayMessage
