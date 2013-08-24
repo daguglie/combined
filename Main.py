@@ -108,6 +108,7 @@ def beat(channel):
     lcd.message(beatCount)
     lcd.backlight(lcd.TEAL)
   else:
+    beatCount +=1
     prevTime = currentTime
     lcd.backlight(lcd.RED)
     print(prevTime)
