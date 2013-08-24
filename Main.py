@@ -18,10 +18,14 @@ timerRun = False
 timerStart = datetime.datetime.now()
 timerStop = timerStart
 prevDispMessage = ""
-
 lcd.clear()
+lcd.backlight(lcd.TEAL)
 lcd.message("Raspberry Pi\nOven Mitt!")
 time.sleep(2)
+
+beatTotalTime = 0
+beatCount = 0
+prevBeat = datetime.datetime.now()
 
 configArray = [1,1,1]
 
@@ -69,18 +73,46 @@ def TimerConfig():
   return str(retVal)
   
 def HeartBeatConfig():
-  global lcd
+  global lcd, prevState
   retMsg = ""
-  if ( GPIO.input(23) == False ):
-    lcd.backlight(lcd.RED)
-    retMsg = "beat"
-  elif ( GPIO.input(23) == True ):
-    lcd.backlight(lcd.BLUE)
-    retMsg = "no beat"
+  if (beatTotalTime != 0 and beatCount == 10):
+    retNum = beatTotalTime / 10
+    retNum = 60/retNum
+    retMsg = str(retNum)
+  else:
+    retMsg = "Not enough heart\n beats yet"
   return retMsg
   
+  if ( GPIO.input(23) == False and prevState):
+    lcd.backlight(lcd.RED)
+    retMsg = "beat"
+    prevState = False
+  elif ( GPIO.input(23) == True and not prevState):
+    lcd.backlight(lcd.BLUE)
+    retMsg = "no beat"
+    prevState = True
+  return retMsg
+  
+def beat(channel):
+  currentTime = datetime.datetime.now()
+  if (count == 11):
+    beatTotalTime = neatTotalTime - prevTime + (currentTime - prevTime)
+    prevTime = currentTime
+    lcd.backlight(lcd.RED)
+    lcd.backlight(lcd.TEAL)
+  elif(count > 0 and count < 11):
+    beatTotalTime += (currentTime - prevTime)
+    lcd.backlight(lcd.RED)
+    lcd.backlight(lcd.TEAL)
+  else:
+    prevTime = currentTime
+    lcd.backlight(lcd.RED)
+    lcd.backlight(lcd.TEAL)
+
 def message3():
   return "last"
+
+GPIO.add_event_detect(23, GPIO.FALLING, callback=beat)
 
 while True:
   if (time.time() - lastButtonPress) > 0.5: #trying to debounce the buttons 
