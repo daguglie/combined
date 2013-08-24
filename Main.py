@@ -99,7 +99,7 @@ while True:
       #lcd.clear()
   elif (choosenScreen == 3):
       displayMessage = message3()
-  if(displayMessage != prevDispMessage)
+  if(displayMessage != prevDispMessage):
     lcd.clear()
     lcd.message(displayMessage)
     
