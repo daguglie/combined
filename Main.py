@@ -114,7 +114,7 @@ while True:
       displayMessage = TimerConfig()
       #lcd.clear()
   elif (choosenScreen == 3):
-      displayMessage = message3()
+      displayMessage = HeartBeatConfig()
   if(displayMessage != prevDispMessage):
     lcd.clear()
     lcd.message(displayMessage)
