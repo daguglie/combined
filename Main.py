@@ -94,9 +94,10 @@ def HeartBeatConfig():
   return retMsg
   
 def beat(channel):
+  global beatCount, beatTotalTime, prevTime
   currentTime = datetime.datetime.now()
   if (beatCount == 11):
-    beatTotalTime = neatTotalTime - prevTime + (currentTime - prevTime)
+    beatTotalTime = beatTotalTime - prevTime + (currentTime - prevTime)
     prevTime = currentTime
     lcd.backlight(lcd.RED)
     lcd.backlight(lcd.TEAL)
