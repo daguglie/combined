@@ -6,7 +6,6 @@ import TempMod
 import datetime
 import RPi.GPIO as GPIO
 
-GPIO.cleanup()
 GPIO.setmode(GPIO.BCM)
 heartBeatPin = 23
 GPIO.setup(heartBeatPin, GPIO.IN)
