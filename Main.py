@@ -13,7 +13,7 @@ lastButtonPress = time.time()
 lastRefresh = time.time()
 timerRun = False
 timerStart = datetime.datetime.now()
-timerStop = datetime.datetime.now()
+timerStop = timerStart
 prevDispMessage = ""
 
 lcd.clear()
