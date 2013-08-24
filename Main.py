@@ -14,6 +14,7 @@ lastRefresh = time.time()
 timerRun = False
 timerStart = datetime.datetime.now()
 timerStop = datetime.datetime.now()
+prevDispMessage = ""
 
 lcd.clear()
 lcd.message("Raspberry Pi\nOven Mitt!")
@@ -85,19 +86,20 @@ while True:
     elif lcd.buttonPressed(lcd.DOWN):
       configArray[choosenScreen] -= 1
     
-  if (time.time() - lastRefresh) > 2: #stop screen flickers
-    if (choosenScreen == 0):
+ 
+  if (choosenScreen == 0):
       displayMessage = TempConfig() #Temperature Module
       #displayMessage = message1()
       #lcd.clear()
-    elif (choosenScreen == 1):
+  elif (choosenScreen == 1):
       displayMessage = TimeConfig()
       #lcd.clear()
-    elif (choosenScreen == 2):
+  elif (choosenScreen == 2):
       displayMessage = TimerConfig()
       #lcd.clear()
-    elif (choosenScreen == 3):
+  elif (choosenScreen == 3):
       displayMessage = message3()
+  if(displayMessage != prevDispMessage)
     lcd.clear()
     lcd.message(displayMessage)
     
