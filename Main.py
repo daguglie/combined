@@ -83,15 +83,15 @@ def HeartBeatConfig():
     retMsg = "Not enough heart\n beats yet"
   return retMsg
   
-  if ( GPIO.input(23) == False and prevState):
-    lcd.backlight(lcd.RED)
-    retMsg = "beat"
-    prevState = False
-  elif ( GPIO.input(23) == True and not prevState):
-    lcd.backlight(lcd.BLUE)
-    retMsg = "no beat"
-    prevState = True
-  return retMsg
+  #if ( GPIO.input(23) == False and prevState):
+  # lcd.backlight(lcd.RED)
+  #  retMsg = "beat"
+  #  prevState = False
+  #elif ( GPIO.input(23) == True and not prevState):
+  #  lcd.backlight(lcd.BLUE)
+  #  retMsg = "no beat"
+  #  prevState = True
+  #return retMsg
   
 def beat(channel):
   global beatCount, beatTotalTime, prevTime
