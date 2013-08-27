@@ -71,7 +71,10 @@ def TimerConfig():
     timerRun = False
   if timerRun == True:
     timerStop = datetime.datetime.now()
-  retVal = str(timerStop - timerStart)[:-4]
+  retVal = str(timerStop - timerStart)
+  length = len(retVal)
+  length = 10 - length
+  retVal = retVal[:length]
   return "Timer\n" + retVal
   
 def HeartBeatConfig():
