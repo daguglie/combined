@@ -102,7 +102,7 @@ def beat(channel):
     heartQueue.append(currentTime - prevTime)
     prevTime = currentTime
     beatTotalTime += heartQueue[-1]
-    print (heartQueue[-1])
+    print str(heartQueue[-1])
     if (len(heartQueue) > 10):
       beatTotalTime -= heartQueue[0]
       heartQueue.popleft()
