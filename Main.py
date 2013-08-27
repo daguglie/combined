@@ -39,9 +39,9 @@ def TempConfig():
   selection = selection % 2
   values = TempMod.getTemp()
   if selection == 1:
-    return str(values[0]) + " C"
+    return str(values[0])[:4] + " C"
   elif selection == 0:
-    return str(values[1]) + " F"
+    return str(values[1])[:4]  + " F"
 
 def TimeConfig():
   selection = configArray[1] 
@@ -72,7 +72,7 @@ def TimerConfig():
   if timerRun == True:
     timerStop = datetime.datetime.now()
   retVal = timerStop - timerStart
-  return str(retVal)
+  return str(retVal)[:-4]
   
 def HeartBeatConfig():
   global lcd, prevState, heartQueue
@@ -80,7 +80,7 @@ def HeartBeatConfig():
   if (beatTotalTime != 0 and len(heartQueue) >= 10):
     retNum = beatTotalTime.total_seconds() / len(heartQueue)
     retNum = 60/retNum
-    retMsg = str(retNum)
+    retMsg = str(retNum)[:5]
   else:
     retMsg = "Not enough heart\n beats yet"
   return retMsg
