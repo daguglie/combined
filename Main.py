@@ -74,7 +74,7 @@ def TimerConfig():
   return str(retVal)
   
 def HeartBeatConfig():
-  global lcd, prevState, 
+  global lcd, prevState, heartQueue
   retMsg = ""
   if (beatTotalTime != 0 and len(heartQueue) >= 10):
     retNum = beatTotalTime.total_seconds() / len(heartQueue)
