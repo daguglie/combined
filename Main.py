@@ -109,16 +109,18 @@ def beat(channel):
     if (len(heartQueue) > 10):
       beatTotalTime -= heartQueue[0]
       heartQueue.popleft()
-    lcd.backlight(lcd.RED)
-    time.sleep(0.1)
-    lcd.backlight(lcd.TEAL)
+    if(choosenScreen = 3):
+      lcd.backlight(lcd.RED)
+      time.sleep(0.1)
+      lcd.backlight(lcd.TEAL)
 
   else:
     beatCount +=1
     prevTime = currentTime
-    lcd.backlight(lcd.RED)
-    time.sleep(0.1)
-    lcd.backlight(lcd.TEAL)
+    if(choosenScreen = 3):
+      lcd.backlight(lcd.RED)
+      time.sleep(0.1)
+      lcd.backlight(lcd.TEAL)
     
 
 def message3():
