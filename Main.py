@@ -76,7 +76,7 @@ def TimerConfig():
   if (length > 10):
     length = length - 10
     print(length)
-  retVal = retVal[:-length]
+    retVal = retVal[:-length]
   return "Timer\n" + retVal
   
 def HeartBeatConfig():
