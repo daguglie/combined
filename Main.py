@@ -76,7 +76,7 @@ def HeartBeatConfig():
   global lcd, prevState
   retMsg = ""
   if (beatTotalTime != 0 and beatCount == 10):
-    retNum = beatTotalTime / 10
+    retNum = beatTotalTime.total_seconds() / 10
     retNum = 60/retNum
     retMsg = str(retNum)
   else:
