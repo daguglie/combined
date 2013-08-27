@@ -73,7 +73,7 @@ def TimerConfig():
     timerStop = datetime.datetime.now()
   retVal = str(timerStop - timerStart)
   length = len(retVal)
-  if (len(length) > 10):
+  if (length > 10):
     length = length - 10
     print(length)
   retVal = retVal[:-length]
