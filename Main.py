@@ -2,6 +2,7 @@
 
 import time
 from Adafruit_CharLCDPlate import Adafruit_CharLCDPlate
+from collections import deque
 import TempMod
 import datetime
 import RPi.GPIO as GPIO
