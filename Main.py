@@ -26,6 +26,7 @@ time.sleep(2)
 beatCount = 0
 prevBeat = datetime.datetime.now()
 beatTotalTime = prevBeat-prevBeat #Setting total time to 0
+heartQueue = deque()
 
 configArray = [1,1,1]
 
@@ -73,10 +74,10 @@ def TimerConfig():
   return str(retVal)
   
 def HeartBeatConfig():
-  global lcd, prevState
+  global lcd, prevState, 
   retMsg = ""
-  if (beatTotalTime != 0 and beatCount == 10):
-    retNum = beatTotalTime.total_seconds() / 10
+  if (beatTotalTime != 0 and len(heartQueue) >= 10):
+    retNum = beatTotalTime.total_seconds() / len(heartQueue)
     retNum = 60/retNum
     retMsg = str(retNum)
   else:
@@ -94,25 +95,26 @@ def HeartBeatConfig():
   #return retMsg
   
 def beat(channel):
-  global beatCount, beatTotalTime, prevTime
+  global beatCount, beatTotalTime, prevTime, heartQueue
   currentTime = datetime.datetime.now()
-  if (beatCount == 11):
-    beatTotalTime = beatTotalTime - prevTime + (currentTime - prevTime)
+  if(beatCount > 0):
+    heartQueue.append(currentTime - prevTime)
     prevTime = currentTime
+    beatTotalTime += heartQueue[-1]
+    if (len(heartQueue) > 10):
+      beatTotalTime -= heartQueue[0]
+      heartQueue.popleft()
     lcd.backlight(lcd.RED)
+    time.sleep(0.1)
     lcd.backlight(lcd.TEAL)
-  elif(beatCount > 0 and beatCount < 11):
-    beatCount +=1
-    beatTotalTime += (currentTime - prevTime)
-    lcd.backlight(lcd.RED)
-    lcd.message(beatCount)
-    lcd.backlight(lcd.TEAL)
+
   else:
     beatCount +=1
     prevTime = currentTime
     lcd.backlight(lcd.RED)
-    print(prevTime)
+    time.sleep(0.1)
     lcd.backlight(lcd.TEAL)
+    
 
 def message3():
   return "last"
